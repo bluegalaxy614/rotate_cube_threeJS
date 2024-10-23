@@ -1,14 +1,23 @@
-import React from 'react'
-import './App.css'
-import CubeScene from './components/RotatingCube'
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+// import RotatingCube from './components/RotatingCube';
+import WavePlane from './components/WavePlane';
+// import LineDrawingTool from './components/LineDrawingTool';
 
-function App() {
-
+const App = () => {
   return (
-    <>
-        <CubeScene />
-    </>
-  )
-}
+    <div className="h-screen w-screen">
+      <Canvas>
+        <ambientLight intensity={0.5} />
+        <pointLight position={[10, 10, 10]} />
+        <OrbitControls />
 
-export default App
+        {/* <RotatingCube /> */}
+        <WavePlane />
+        {/* <LineDrawingTool /> */}
+      </Canvas>
+    </div>
+  );
+};
+
+export default App;

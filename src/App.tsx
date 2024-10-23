@@ -1,8 +1,8 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 // import RotatingCube from './components/RotatingCube';
-import WavePlane from './components/WavePlane';
-// import LineDrawingTool from './components/LineDrawingTool';
+// import WavePlane from './components/WavePlane';
+import LineDrawingTool from './components/LineDrawingTool';
 
 const App = () => {
   return (
@@ -10,11 +10,11 @@ const App = () => {
       <Canvas>
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} />
-        <OrbitControls />
+        {/* <OrbitControls /> */}
 
         {/* <RotatingCube /> */}
-        <WavePlane />
-        {/* <LineDrawingTool /> */}
+        {/* <WavePlane /> */}
+        <LineDrawingTool />
       </Canvas>
     </div>
   );

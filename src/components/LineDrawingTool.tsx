@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
+import { Html } from '@react-three/drei';
 
 const LineDrawingTool = () => {
   const { mouse, viewport } = useThree();
@@ -10,7 +11,8 @@ const LineDrawingTool = () => {
   const lineRef = useRef<THREE.Line | any>(null);
   const boxRef = useRef<THREE.Mesh>(null);
 
-  const handlePointerDown = () => {
+  const handlePointerDown = (e:any) => {
+    e.stopPropagation();
     const startX = (mouse.x * viewport.width) / 2;
     const startY = (mouse.y * viewport.height) / 2;
     setStartPos(new THREE.Vector3(startX, startY, 0));
@@ -55,8 +57,13 @@ const LineDrawingTool = () => {
 
       {startPos && endPos && (
         <mesh ref={boxRef}>
-          <boxGeometry args={[0.1, 0.1, 0.1]} />
-          <meshBasicMaterial color="red" />
+          {/* <boxGeometry args={[0.1, 0.1, 0.1]} />
+          <meshBasicMaterial color="red" /> */}
+          <Html position={[0, 0, 0]} center>
+            <div style={{ color: 'white', backgroundColor: 'red', padding: '5px' }}>
+              {startPos.distanceTo(endPos).toFixed(2)}
+            </div>
+          </Html>
         </mesh>
       )}
 
